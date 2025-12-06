@@ -19,37 +19,86 @@ Real Talk is a real-time chat application built using the MERN stack (MongoDB, E
 
 1. Clone the repository:
 
-   
-  https://github.com/mhatreojas/Whispr
+   ```bash
+   git clone https://github.com/mhatreojas/Whispr
+   cd Whispr
+   ```
 
-2.Navigate to the client folder and install the dependencies:
+2. Set up environment variables:
+
+   **Backend (.env in root directory):**
+   ```bash
+   cp .env.example .env
+   ```
+   Edit `.env` and add your MongoDB URI, JWT secret, and other configuration.
+
+   **Frontend (client/.env):**
+   ```bash
+   cd client
+   cp .env.example .env
+   ```
+   For development, the default `VITE_API_BASE_URL=http://localhost:5000` works.
+   For production, set it to your backend URL or leave empty if deployed together.
+
+3. Install dependencies:
 
    ```bash
-    cd client
-    npm install
-  ```
+   # Install backend dependencies (from root)
+   npm install
+   
+   # Install frontend dependencies
+   cd client
+   npm install
+   cd ..
+   ```
 
-3.Navigate to the server folder and install the dependencies:
+## Usage
 
-  ```bash
-    cd ../server
-    npm install
-  ```
+### Development
 
-#Usage
+1. Start the backend server (from root directory):
 
-1.Run the development server for the client:
+   ```bash
+   npm run dev
+   ```
 
-  ```bash
+2. In a new terminal, start the frontend (from root directory):
+
+   ```bash
    cd client
    npm run dev
-  ```
+   ```
 
-2.Run the development server for the server
+3. Open your browser and navigate to `http://localhost:3000`
 
-  ```bash
-   npm run dev
-  ```
+### Production
+
+1. Build the application:
+
+   ```bash
+   npm run build
+   ```
+
+2. Start the production server:
+
+   ```bash
+   npm start
+   ```
+
+   The application will serve both frontend and backend on the configured PORT (default: 5000).
+
+## Environment Variables
+
+### Backend (.env)
+- `PORT` - Server port (default: 5000)
+- `MONGO_DB_URI` - MongoDB connection string
+- `JWT_SECRET` - Secret key for JWT tokens
+- `NODE_ENV` - Environment mode (development/production)
+
+### Frontend (client/.env)
+- `VITE_API_BASE_URL` - Backend API URL
+  - Development: `http://localhost:5000`
+  - Production: Leave empty to use same domain, or set to your backend URL
 
 # Future Enhancements
 
